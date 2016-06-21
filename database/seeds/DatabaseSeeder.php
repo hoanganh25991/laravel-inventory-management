@@ -5,7 +5,7 @@ use App\Ingredient;
 use App\Drink;
 use App\Recipe;
 use App\Record;
-
+use App\Order;
 class DatabaseSeeder extends Seeder{
     /**
      * Run the database seeds.
@@ -14,8 +14,11 @@ class DatabaseSeeder extends Seeder{
      */
     public function run(){
         // $this->call(UsersTableSeeder::class);
-        factory(Ingredient::class, 8)->create();
-        factory(Drink::class, 25)->create();
-        factory(Recipe::class, 106)->create();
+//        factory(Ingredient::class, 8)->create();
+//        factory(Drink::class, 25)->create();
+//        factory(Recipe::class, 106)->create();
+
+//        factory(Drink::class, 25)->create();
+        factory(Order::class, 7)->create();
     }
 }

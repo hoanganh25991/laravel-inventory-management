@@ -3,9 +3,6 @@
 namespace App;
 
 class Record extends BaseModel{
-    const ITEM_ID = "item_id";
-    const ITEM_TYPE = "item_type";
-    
     const INGREDIENT_ID = "ingredient_id";
     
     const RECORD_ID = "record_id";
@@ -17,4 +14,15 @@ class Record extends BaseModel{
 
     const TABLE = "record";
     protected $table = self::TABLE;
+    protected $fillable = [
+        self::INGREDIENT_ID,
+        self::RECORD_TYPE,
+        self::RECORD_ID,
+        self::QUANITY,
+        self::PRICE
+    ];
+    
+    public function record(){
+        return $this->morphTo();
+    }
 }

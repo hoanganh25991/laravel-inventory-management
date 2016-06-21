@@ -16,6 +16,7 @@ use App\Ingredient;
 use App\Record;
 use App\Drink;
 use App\Recipe;
+use App\Order;
 /** @var Factory $factory */
 $factory->define(Ingredient::class, function (Faker $faker){
     return [
@@ -26,8 +27,9 @@ $factory->define(Ingredient::class, function (Faker $faker){
 
 $factory->define(Drink::class, function (Faker $faker){
     return [
-        Drink::NAME => $faker->name,
-        Drink::DES => $faker->sentences(1, true),
+//        Drink::NAME => $faker->name,
+//        Drink::DES => $faker->sentences(1, true),
+        Drink::PRICE => $faker->randomFloat(null, 0, 100)
     ];
 });
 
@@ -56,3 +58,10 @@ $factory->define(Recipe::class, function (Faker $faker){
 //        Record::QUANITY => $faker->randomFloat(null, 0, 100)
 //    ];
 //});
+$factory->define(Order::class, function (Faker $faker){
+    $drinkIdArray = Drink::all()->lists("id")->toArray();
+    return [
+        Order::ORDER_TYPE => Drink::class,
+        Order::ORDER_ID => $faker->randomElement($drinkIdArray)
+    ];
+});
